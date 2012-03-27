@@ -73,6 +73,7 @@ module ActiveLinkTo
   #   is_active_link?('/root', ['users', ['show', 'edit']])
   #
   def is_active_link?(url, condition = nil)
+    condition ||= Rails.application.config.active_link_to.active
     url = url_for(url).sub(/\?.*/, '') # ignore GET params
     case condition
     when :inclusive, nil
